@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manager App</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  margin: 0;
+  padding: 20px;
+}
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+h1 {
+  text-align: center;
+  color: #2563eb;
+}
+button {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+}
+button:active {
+  background: #1d4ed8;
+}
+#managerPage {
+  display: none;
+}
+input {
+  width: 95%;
+  padding: 10px;
+  margin: 8px 0;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Manager App</h1>
+
+  <div id="homePage">
+    <p>Welcome to your manager app!</p>
+    <button onclick="showManager()">Manager Page</button>
+    <button onclick="alert('Welcome to the app!')">Home</button>
+  </div>
+
+  <div id="managerPage">
+    <h2>Manager Dashboard</h2>
+    <input id="task" placeholder="Enter a task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+    <button onclick="showHome()">Back to Home</button>
+  </div>
+</div>
+
+<script>
+function showManager() {
+  document.getElementById('homePage').style.display = 'none';
+  document.getElementById('managerPage').style.display = 'block';
+}
+
+function showHome() {
+  document.getElementById('managerPage').style.display = 'none';
+  document.getElementById('homePage').style.display = 'block';
+}
+
+function addTask() {
+  const task = document.getElementById('task');
+  if (task.value.trim() === '') {
+    alert('Please enter a task');
+    return;
+  }
+
+  const item = document.createElement('li');
+  item.textContent = task.value.trim();
+  document.getElementById('taskList').appendChild(item);
+  task.value = '';
+}
+</script>
+
+</body>
+</html>
